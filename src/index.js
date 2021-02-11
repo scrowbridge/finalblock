@@ -77,6 +77,34 @@ registerBlockType( 'sc-block/testimonial', {
 	'sc'
 	],
 
+	// these are the data "fields" we want to store with out block
+	//adding the attributes
+	attributes: {
+		quote: {
+			type: 'string',
+			source: 'html',
+			selector: '.quote',
+		},
+		stars: {
+			type: 'number',
+			default: 5,
+		},
+		imgUrl: {
+			type: 'string',
+			default: 'https://placehold.it/75',
+		},
+		author: {
+			type: 'string',
+			source:  'text',
+			selector: '.author',
+		},
+		location: {
+			type: 'string',
+			source: 'text',
+			selector: '.location',
+		}
+	},
+
 	/**
 	 * @see ./edit.js
 	 */
