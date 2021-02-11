@@ -24,7 +24,7 @@ import './style.scss';
 /**
  * Internal dependencies
  */
-import Edit from './edit';
+import edit from './edit';
 import save from './save';
 
 /**
@@ -32,7 +32,7 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType( 'sc-block/sc-block', {
+registerBlockType( 'sc-block/testimonial', {
 	/**
 	 * @see https://make.wordpress.org/core/2020/11/18/block-api-version-2/
 	 */
@@ -42,13 +42,13 @@ registerBlockType( 'sc-block/sc-block', {
 	 * This is the display title for your block, which can be translated with `i18n` functions.
 	 * The block inserter will show this name.
 	 */
-	title: __( 'Testimonial', 'sc-block' ),
+	title: __('Testimonial', 'sc-block'),
 
 	/**
 	 * This is a short description for your block, can be translated with `i18n` functions.
 	 * It will be shown in the Block Tab in the Settings Sidebar.
 	 */
-	description: __( 'A collection of editors blocks', 'sc-block' ),
+	description: __('A collection of editors blocks', 'sc-block'),
 
 	/**
 	 * Blocks are grouped into categories to help users browse and discover them.
@@ -70,13 +70,22 @@ registerBlockType( 'sc-block/sc-block', {
 		html: false,
 	},
 
+	keywords: [
+	'block',
+	__('testimonial'),
+	__('review'),
+	'sc'
+	],
+
 	/**
 	 * @see ./edit.js
 	 */
-	edit: Edit,
+	edit: edit,
 
 	/**
 	 * @see ./save.js
 	 */
 	save,
+		// same as
+		// save: save
 } );
