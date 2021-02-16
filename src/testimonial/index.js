@@ -108,7 +108,7 @@ registerBlockType( 'sc-block/testimonial', {
 		},
 		textColor: {
 			type: 'string',
-		}
+		},
 	},
 
 	/**
