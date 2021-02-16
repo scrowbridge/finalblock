@@ -15,7 +15,7 @@ import { __ } from '@wordpress/i18n';
 //import { RichText } from '@wordpress/block-editor';
 import {useBlockProps, RichText, MediaUpload, MediaUploadCheck, PlainText,
 		InspectorControls} from '@wordpress/block-editor';
-import {SelectControl, PanelBody, PanelRow} from '@wordpress/components';
+import {SelectControl, PanelBody, PanelRow, ColorPalette} from '@wordpress/components';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -39,12 +39,29 @@ export default function edit({attributes, setAttributes}) {
 //export default function edit(props) {
 	//let attributes = props.attributes;
 	//let {attributes, setAttributes} = props;
+
+	let divStyles = {
+		backgroundColor: attributes.backgroundColor,
+	}
+
 	return (
-		<div { ...useBlockProps() }>
+		<div { ...useBlockProps({style: divStyles}) }>
 			<InspectorControls>
 				<PanelBody title="Basic" initialOpen={true}>
 					<PanelRow>
-						<p>Panel #1</p>
+						<PanelRow>
+							<p> Background Color<br /> </p>
+						</PanelRow>
+						<ColorPalette
+							label={__('Background Color')}
+							value={attributes.backgroundColor}
+							onChange={(color) => {setAttributes({backgroundColor: color})}}
+							colors={[
+								{name: 'Blue', color: '#0000ff'},
+								{name: 'Red', color: '#ff0000'},
+								{name: 'Green', color: '#00ff00'},
+							]}
+						/>
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
