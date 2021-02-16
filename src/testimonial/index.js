@@ -102,7 +102,13 @@ registerBlockType( 'sc-block/testimonial', {
 			type: 'string',
 			source: 'text',
 			selector: '.location',
-		}
+		},
+		backgroundColor: {
+			type: 'string',
+		},
+		textColor: {
+			type: 'string',
+		},
 	},
 
 	/**

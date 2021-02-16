@@ -13,8 +13,10 @@ import { __ } from '@wordpress/i18n';
  */
 //import { useBlockProps } from '@wordpress/block-editor';
 //import { RichText } from '@wordpress/block-editor';
-import {useBlockProps, RichText, MediaUpload, MediaUploadCheck, PlainText,
-		InspectorControls} from '@wordpress/block-editor';
+import {
+	useBlockProps, RichText, MediaUpload, MediaUploadCheck, PlainText,
+	InspectorControls, PanelColorSettings
+} from '@wordpress/block-editor';
 import {SelectControl, PanelBody, PanelRow} from '@wordpress/components';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -39,16 +41,32 @@ export default function edit({attributes, setAttributes}) {
 //export default function edit(props) {
 	//let attributes = props.attributes;
 	//let {attributes, setAttributes} = props;
-	return (
-		<div { ...useBlockProps() }>
-			<InspectorControls>
-				<PanelBody title="Basic" initialOpen={true}>
-					<PanelRow>
-						<p>Panel #1</p>
-					</PanelRow>
-				</PanelBody>
-			</InspectorControls>
 
+	let divStyles = {
+		backgroundColor: attributes.backgroundColor,
+		color: attributes.textColor,
+	}
+
+	return (
+		<div { ...useBlockProps({style: divStyles}) }>
+			<InspectorControls>
+						<PanelColorSettings
+							title={__('Color Settings')}
+							initialOpen={true}
+							colorSettings={ [
+								{
+									value: attributes.backgroundColor,
+									onChange: (color) => {setAttributes({backgroundColor: color})},
+									label: __('Background Color'),
+								},
+							{
+								value: attributes.textColor,
+								onChange: (color) => {setAttributes({textColor: color})},
+								label: __('Text Color'),
+							},
+							]}
+							/>
+			</InspectorControls>
 			<SelectControl
 				label={ __( 'Select a rating:' ) }
 				value={ attributes.stars } // e.g: value = [ 'a', 'c' ]
