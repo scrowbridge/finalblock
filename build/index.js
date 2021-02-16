@@ -1346,7 +1346,8 @@ function edit(_ref) {
   //let attributes = props.attributes;
   //let {attributes, setAttributes} = props;
   var divStyles = {
-    backgroundColor: attributes.backgroundColor
+    backgroundColor: attributes.backgroundColor,
+    color: attributes.textColor
   };
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["useBlockProps"])({
     style: divStyles
@@ -1371,6 +1372,14 @@ function edit(_ref) {
       name: 'Green',
       color: '#00ff00'
     }]
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, " Text Color", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("br", null), " ")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+    value: attributes.textColor,
+    onChangeComplete: function onChangeComplete(color) {
+      setAttributes({
+        textColor: color.hex
+      });
+    },
+    disableAlpha: true
   })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Select a rating:'),
     value: attributes.stars // e.g: value = [ 'a', 'c' ]
@@ -1584,6 +1593,9 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('sc-
     },
     backgroundColor: {
       type: 'string'
+    },
+    textColor: {
+      type: 'string'
     }
   },
 
@@ -1648,7 +1660,8 @@ function save(_ref) {
   var attributes = _ref.attributes;
   var starIcons = Array(5).fill('&#9733;', 0, attributes.stars).join('');
   var divStyles = {
-    backgroundColor: attributes.backgroundColor
+    backgroundColor: attributes.backgroundColor,
+    color: attributes.textColor
   };
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["useBlockProps"].save({
     style: divStyles

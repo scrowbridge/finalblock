@@ -15,7 +15,7 @@ import { __ } from '@wordpress/i18n';
 //import { RichText } from '@wordpress/block-editor';
 import {useBlockProps, RichText, MediaUpload, MediaUploadCheck, PlainText,
 		InspectorControls} from '@wordpress/block-editor';
-import {SelectControl, PanelBody, PanelRow, ColorPalette} from '@wordpress/components';
+import {SelectControl, PanelBody, PanelRow, ColorPalette, ColorPicker} from '@wordpress/components';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -42,6 +42,7 @@ export default function edit({attributes, setAttributes}) {
 
 	let divStyles = {
 		backgroundColor: attributes.backgroundColor,
+		color: attributes.textColor,
 	}
 
 	return (
@@ -61,6 +62,16 @@ export default function edit({attributes, setAttributes}) {
 								{name: 'Red', color: '#ff0000'},
 								{name: 'Green', color: '#00ff00'},
 							]}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<PanelRow>
+							<p> Text Color<br /> </p>
+						</PanelRow>
+						<ColorPicker
+							value={attributes.textColor}
+							onChangeComplete={(color) => {setAttributes({textColor: color.hex})}}
+							disableAlpha
 						/>
 					</PanelRow>
 				</PanelBody>

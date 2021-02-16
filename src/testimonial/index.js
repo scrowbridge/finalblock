@@ -106,6 +106,9 @@ registerBlockType( 'sc-block/testimonial', {
 		backgroundColor: {
 			type: 'string',
 		},
+		textColor: {
+			type: 'string',
+		}
 	},
 
 	/**
