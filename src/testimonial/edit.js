@@ -15,10 +15,13 @@ import { __ } from '@wordpress/i18n';
 //import { RichText } from '@wordpress/block-editor';
 import {
 	useBlockProps, RichText, MediaUpload, MediaUploadCheck, PlainText,
-	InspectorControls, PanelColorSettings
-} from '@wordpress/block-editor';
-import {SelectControl, PanelBody, PanelRow} from '@wordpress/components';
-import {select} from "@wordpress/data";
+	InspectorControls} from '@wordpress/block-editor';
+import {SelectControl, PanelBody} from '@wordpress/components';
+
+//internal import
+import {SCColorPanel} from '../common/SCColorPanel';
+import {SCStar} from "../common/SCStar";
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -48,7 +51,7 @@ export default function edit({attributes, setAttributes}) {
 		color: attributes.textColor,
 	}
 
-	let settings = select('core/editor').getEditorSettings();
+	//let settings = select('core/editor').getEditorSettings();
 	// to see different things you can run.
 	//console.long(settings) ;
 	//console.long(settings, select('core');
@@ -57,39 +60,19 @@ export default function edit({attributes, setAttributes}) {
 	return (
 		<div { ...useBlockProps({style: divStyles}) }>
 			<InspectorControls>
-						<PanelColorSettings
-							title={__('Color Settings')}
-							initialOpen={true}
-							colorSettings={ [
-								{
-									value: attributes.backgroundColor,
-									onChange: (color) => {setAttributes({backgroundColor: color})},
-									label: __('Background Color'),
-								},
-							{
-								value: attributes.textColor,
-								onChange: (color) => {setAttributes({textColor: color})},
-								label: __('Text Color'),
-								colors: [
-									...settings.colors,
-									{name: 'White', slug: 'white', color: '#ffffff'}
-								]
-							},
-							]}
-							/>
+				<PanelBody title="Test"></PanelBody>
+				<SCColorPanel
+					attributes={attributes}
+					setAttributes={setAttributes}
+					initialOpen={true}
+				/>
 			</InspectorControls>
-			<SelectControl
-				label={ __( 'Select a rating:' ) }
-				value={ attributes.stars } // e.g: value = [ 'a', 'c' ]
-				onChange={ ( stars ) => { setAttributes( { stars } ) } }
-				options={ [
-					{ value: '1', label: '*' },
-					{ value: '2', label: '**' },
-					{ value: '3', label: '***' },
-					{ value: '4', label: '****' },
-					{ value: '5', label: '*****' },
-				] }
+
+			<SCStar
+				attributes={attributes}
+				setAttributes={setAttributes}
 			/>
+
 
 			<RichText
 				tagName="div" // The tag here is the element output and editable in the admin
