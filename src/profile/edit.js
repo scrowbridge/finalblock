@@ -13,9 +13,10 @@ import { __ } from '@wordpress/i18n';
  */
 //import { useBlockProps } from '@wordpress/block-editor';
 //import { RichText } from '@wordpress/block-editor';
-import {useBlockProps, RichText, MediaUpload, MediaUploadCheck, PlainText,
-		InspectorControls} from '@wordpress/block-editor';
-import {SelectControl, PanelBody, PanelRow} from '@wordpress/components';
+import {useBlockProps, RichText, MediaUpload, MediaUploadCheck, PlainText } from '@wordpress/block-editor';
+
+
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -41,35 +42,20 @@ export default function edit({attributes, setAttributes}) {
 	//let {attributes, setAttributes} = props;
 	return (
 		<div { ...useBlockProps() }>
-			<InspectorControls>
-				<PanelBody title="Basic" initialOpen={true}>
-					<PanelRow>
-						<p>Panel #1</p>
-					</PanelRow>
-				</PanelBody>
-			</InspectorControls>
-
-			<SelectControl
-				label={ __( 'Select a rating:' ) }
-				value={ attributes.stars } // e.g: value = [ 'a', 'c' ]
-				onChange={ ( stars ) => { setAttributes( { stars } ) } }
-				options={ [
-					{ value: '1', label: '*' },
-					{ value: '2', label: '**' },
-					{ value: '3', label: '***' },
-					{ value: '4', label: '****' },
-					{ value: '5', label: '*****' },
-				] }
+			<RichText
+				tagName="h2"
+				value={ attributes.content}
+				allowedFormats={ ['core/bold']}
+				onChange={ ( content ) => setAttributes( { content } ) } // Store updated content as a block attribute
+				placeholder="Title of Position"
 			/>
-
 			<RichText
 				tagName="div" // The tag here is the element output and editable in the admin
 				value={ attributes.quote } // Any existing content, either from the database or an attribute default
 				allowedFormats={ [ 'core/bold', 'core/italic' ] } // Allow the content to be made bold or italic, but do not allow other formatting options
 				onChange={ ( quote ) => setAttributes( { quote } ) } // Store updated content as a block attribute
-				placeholder="Lorem ipsum...."// Display this text before any content has been added by the user
+				placeholder="Description of Position"// Display this text before any content has been added by the user
 			/>
-
 			<div className="quote-profile">
 				<div className="photo">
 					<MediaUploadCheck>
@@ -85,18 +71,30 @@ export default function edit({attributes, setAttributes}) {
 						className="author"
 						value={attributes.author}
 						onChange={ ( author ) => setAttributes( { author } ) }
-						placeholder="Meatball Perez"
+						placeholder="First, Last Name"
 						/>
-				</div>
-				<div className="text">
+
 					<PlainText
 						className="location"
 						value={attributes.location}
 						onChange={ ( location ) => setAttributes( { location } ) }
 						placeholder="City, State"
 					/>
+					<PlainText
+						className="age"
+						value={attributes.age}
+						onChange={ ( age ) => setAttributes( { age } ) }
+						placeholder="DOB (4/15/2013)"
+						allowedFormats={ [ 'core/bold', 'core/italic' ] }
+					/>
+					<PlainText
+						className="hireDate"
+						value={attributes.hireDate}
+						onChange={ ( hireDate ) => setAttributes( { hireDate } ) }
+						placeholder="Date Hired: 1/1/2015"
+						allowedFormats={ [ 'core/bold', 'core/italic' ] }
+					/>
 				</div>
-
 			</div>
 		</div>
 	);

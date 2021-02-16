@@ -1,0 +1,64 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-sc-block-profile {
+  border: .1em solid #aaaaaa;
+  border-radius: .5em;
+  color: black;
+  margin: 5px auto;
+  background-color: #F3F3F3;
+
+  .quote {
+	width: 100%;
+	padding: 0 2%;
+	line-height: 1.5;
+  }
+
+  .quote-profile {
+	background-color: white;
+	border-radius: 0 0 .5em .5em;
+	padding: 2em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.photo img {
+	  width: 75px;
+	  height: 75px;
+	  object-fit: cover;
+	  border-radius: 10%;
+	  margin-right: 2em;
+	}
+
+	.author, .location, .age, .hireDate {
+	  margin: 0 0.5% 0 0;
+	  text-align: right;
+	  font-weight: 700;
+	}
+
+	.author {
+	  margin: 0 0 5px 0;
+
+	}
+	.age, .hireDate {
+	  font-weight: 400;
+	  font-size: 0.9em;
+	}
+
+	.location {
+	  font-weight: 300;
+	  font-size: 0.8em;
+	}
+
+	.content {
+	  border-right: #ccc solid 1px;
+	  width: 90%;
+	  text-align: center;
+	  color: #383a3d;
+	}
+  }
+}
