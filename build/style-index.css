@@ -11,6 +11,13 @@
   margin: 0 auto;
   background-color: #F3F3F3;
 }
+.wp-block-sc-block-testimonial.dark {
+  background-color: #3e444a;
+  color: #f3f3f3;
+}
+.wp-block-sc-block-testimonial.dark .quote-profile {
+  background-color: #000000;
+}
 .wp-block-sc-block-testimonial .stars {
   text-align: center;
   font-size: 2em;

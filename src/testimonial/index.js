@@ -102,7 +102,10 @@ registerBlockType( 'sc-block/testimonial', {
 			type: 'string',
 			source: 'text',
 			selector: '.location',
-		}
+		},
+		theme: {
+			type: 'string',
+		},
 	},
 
 	/**

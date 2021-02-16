@@ -28,7 +28,7 @@ export default function save( {attributes}) {
 		.join('');
 
 	return (
-		<div { ...useBlockProps.save() }>
+		<div { ...useBlockProps.save({className: attributes.theme}) }>
 			<div className="stars">{starIcons}</div>
 			<RichText.Content tagname="div" className="quote" value={ attributes.quote } />
 			<div className="quote-profile">

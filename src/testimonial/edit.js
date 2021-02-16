@@ -40,11 +40,19 @@ export default function edit({attributes, setAttributes}) {
 	//let attributes = props.attributes;
 	//let {attributes, setAttributes} = props;
 	return (
-		<div { ...useBlockProps() }>
+		<div { ...useBlockProps({className: attributes.theme}) }>
 			<InspectorControls>
 				<PanelBody title="Basic" initialOpen={true}>
 					<PanelRow>
-						<p>Panel #1</p>
+						<SelectControl
+							label={__('Theme')}
+							value={attributes.theme}
+							onChange={ (theme) => { setAttributes({theme} ) } }
+							options={ [
+								{value: 'light', label: 'Light Theme'},
+								{value: 'dark', label: 'Dark Theme'},
+							]}
+						/>
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
