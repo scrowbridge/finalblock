@@ -2,3 +2,5 @@
 // repeat for each block
 import './testimonial';
 import './profile';
+
+import './border-control/index';
